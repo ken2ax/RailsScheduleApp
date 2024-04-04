@@ -1,0 +1,35 @@
+<%= render "shared/apptitle" %>
+
+<h3 class="bg-info-subtle text-center">予定の詳細</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <div class="bg-dark-subtle">タイトル</div>
+      <div class="bg-body-secondary"><%= @schedule.title %></div>
+    </div>
+    <div class="column">
+    <div class="bg-dark-subtle">開始日</div>
+    <div class="bg-body-secondary"><%= l @schedule.startdate %></div>
+  </div>
+  <div>
+    <div class="bg-dark-subtle">終了日</div>
+    <div class="bg-body-secondary"><%= l @schedule.enddate %></div>
+  </div>
+  <div>
+    <div class="bg-dark-subtle">終日</div>
+    <div class="bg-body-secondary"><%= @schedule.allday ? '○' : '' %></div>
+  </div>
+  <div>
+    <div class="bg-dark-subtle">スケジュールメモ</div>
+    <div class="bg-body-secondary"><%= @schedule.memo %></div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <ul>
+    <li><%= button_to "この予定を編集する", edit_schedule_path, method: :get %></li>
+    <li><%= link_to "予定一覧に戻る", :schedules %></li>
+  </ul>
+</div>

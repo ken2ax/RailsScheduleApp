@@ -1,0 +1,59 @@
+<div class="bg-body-secondary">
+
+  <%= render "shared/apptitle" %>
+
+  <h3 class="bg-info-subtle text-center">予定一覧</h3>
+
+  <div class="link_to_button">
+    <p><%= link_to "予定を新規登録する", :new_schedule, class:"btn btn-primary" %></p>
+  </div>
+
+
+  <% if flash[:notice] %>
+    <p class="notice bg-warning"><%= flash[:notice] %></p>
+  <% end %>
+
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>更新日時</th>
+        <th>詳細</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= schedule.id %></td>
+          <td><%= schedule.title %></td>
+          <td><%= l schedule.startdate %></td>
+          <td><%= l schedule.enddate %></td>
+          <td><%= schedule.allday ? '○' : '' %></td>
+          <td><%= l schedule.updated_at %></td>
+          <td>
+            <%= link_to "詳細", schedule %>
+          </td>
+          <td>
+            <%= link_to "編集", [:edit, schedule] %>
+          </td>
+          <td>
+            <%= link_to "削除", schedule, method: :delete, data: { confirm: '予定を削除しますか?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between">
+    <div>登録されている予定<%= Schedule.count %>件</div>
+    <div>本日の日付 <%= l Date.today %> </div>
+  </div>
+</div>

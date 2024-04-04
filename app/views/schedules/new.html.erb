@@ -1,0 +1,41 @@
+<%= render "shared/apptitle" %>
+
+<h3 class="bg-info-subtle text-center">予定の新規登録</h3>
+
+<%= render "shared/error", object: @schedule %>
+
+<%= form_with model: @schedule do |f| %>
+  <div>
+    <div>
+      <div class="my-2 bg-dark-subtle" ><%= f.label :title, "タイトル" %></div>
+      <div><%= f.text_field :title %></div> 
+    </div>
+
+    <div>
+      <div class="my-2 bg-dark-subtle"><%= f.label :startdate, "開始日" %></div>
+      <div><%= f.date_select :startdate %></div>
+    </div>
+
+    <div>
+      <div class="my-2 bg-dark-subtle"><%= f.label :enddate, "終了日" %></div>
+      <div><%= f.date_select :enddate %></div>
+    </div>
+
+    <div>
+      <div class="my-2 bg-dark-subtle"><%= f.label :allday, "終日" %></div>
+      <div><%= f.check_box :allday %>終日の場合はチェックを入れる</div>
+    </div>
+
+    <div>
+      <div class="my-2 bg-dark-subtle"><%= f.label :memo, "スケジュールメモ" %></div>
+      <div><%= f.text_area :memo %></td>
+    </div>
+  </div>
+
+  <div>
+    <ul>
+      <li><%= f.submit "予定を登録する" %></li>
+      <li><%= link_to "予定一覧に戻る", :schedules %></li>
+    </ul>
+  </div>
+<% end %>

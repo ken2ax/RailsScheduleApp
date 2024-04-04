@@ -11,3 +11,15 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("jquery")
+
+//= require jquery_ujs
+
+import 'bootstrap'
+import '../stylesheets/application.scss'
+//require("data-confirm-modal")
+
+window.jQuery = window.$ = require('jquery')
+
+require("moment/locale/ja")
